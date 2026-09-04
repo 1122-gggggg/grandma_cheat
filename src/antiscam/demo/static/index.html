@@ -764,6 +764,219 @@
       box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
     }
 
+    /* ============================================================
+       模擬電話來電 overlay（響鈴動畫 + 來電者 ID + 接聽／拒接）
+       ============================================================ */
+    .incoming-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(2, 6, 16, 0.9);
+      backdrop-filter: blur(14px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1200;
+    }
+
+    .incoming-overlay.show {
+      display: flex;
+    }
+
+    .phone-box {
+      width: 380px;
+      max-width: 92vw;
+      background: linear-gradient(165deg, #141c30 0%, #0a0f1e 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 30px;
+      padding: 40px 28px 34px;
+      text-align: center;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+      animation: box-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .caller-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: rgba(0, 240, 255, 0.08);
+      border: 2px solid rgba(0, 240, 255, 0.4);
+      font-size: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+
+    .phone-box.ringing .caller-avatar {
+      animation: avatar-shake 0.9s ease-in-out infinite;
+    }
+
+    @keyframes avatar-shake {
+      0%, 100% { transform: rotate(-6deg); }
+      50% { transform: rotate(6deg) scale(1.06); }
+    }
+
+    .phone-box.ringing .caller-avatar::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 240, 255, 0.5);
+      animation: ring-wave 1.5s ease-out infinite;
+    }
+
+    @keyframes ring-wave {
+      from { transform: scale(0.95); opacity: 0.9; }
+      to { transform: scale(1.65); opacity: 0; }
+    }
+
+    .caller-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+      animation: label-blink 1.2s ease-in-out infinite;
+    }
+
+    @keyframes label-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.45; }
+    }
+
+    .caller-name {
+      font-size: 1.7rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .caller-number {
+      font-family: monospace;
+      font-size: 1.1rem;
+      color: var(--cyan-color);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .caller-tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255, 23, 68, 0.55);
+      background: rgba(255, 23, 68, 0.12);
+      color: #ff8a80;
+    }
+
+    .caller-tag.tag-safe {
+      border-color: rgba(0, 230, 118, 0.5);
+      background: rgba(0, 230, 118, 0.1);
+      color: #69f0ae;
+    }
+
+    .call-btn-row {
+      display: flex;
+      gap: 44px;
+      justify-content: center;
+    }
+
+    .call-btn {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 1.9rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease;
+    }
+
+    .call-btn:hover { transform: scale(1.08); }
+    .call-btn:active { transform: scale(0.95); }
+
+    .call-btn.answer {
+      background: #10b981;
+      animation: answer-pulse 1.2s infinite;
+    }
+
+    @keyframes answer-pulse {
+      0%, 100% { box-shadow: 0 0 18px rgba(16, 185, 129, 0.4); }
+      50% { box-shadow: 0 0 36px rgba(16, 185, 129, 0.75); }
+    }
+
+    .call-btn.decline {
+      background: #ef4444;
+      box-shadow: 0 0 24px rgba(239, 68, 68, 0.45);
+    }
+
+    .call-btn-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-weight: 700;
+      min-width: 76px;
+    }
+
+    /* 通話中浮動狀態條 */
+    .call-status-pill {
+      position: fixed;
+      top: 78px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 900;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.5);
+      padding: 8px 20px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .call-status-pill.show {
+      display: flex;
+    }
+
+    .pill-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10b981;
+      animation: label-blink 1.2s ease-in-out infinite;
+    }
+
+    .call-timer {
+      font-family: monospace;
+      color: var(--cyan-color);
+      font-size: 1.05rem;
+    }
+
+    .endcall-mini-btn {
+      background: #ef4444;
+      color: #ffffff;
+      border: none;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .endcall-mini-btn:hover {
+      background: #dc2626;
+    }
+
     /* 響應式調整 */
     @media (max-width: 1100px) {
       main {
@@ -879,16 +1092,16 @@
       <!-- 快速劇本測試按鈕 -->
       <div class="test-btn-row">
         <span style="font-weight: bold; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
-          <span>⚡</span> 快速示範測試：
+          <span>📞</span> 模擬來電（響鈴 → 接聽 → 即時監聽，6 秒未接自動接聽）：
         </span>
         <button class="btn-test btn-danger" id="btnTestFraud">
-          <span>🚨</span> 播假檢警電話 (逐步加壓)
+          <span>🚨</span> 模擬來電：假檢警 (逐步加壓)
         </button>
         <button class="btn-test btn-danger" id="btnTestGuessWho">
-          <span>👥</span> 播猜猜我是誰 (觸發密語)
+          <span>👥</span> 模擬來電：猜猜我是誰 (觸發密語)
         </button>
         <button class="btn-test btn-success" id="btnTestNormal">
-          <span>👦</span> 播孫子問候電話 (正常對照)
+          <span>👦</span> 模擬來電：孫子問候 (正常對照)
         </button>
         <button class="btn-test" id="btnCustomInput">
           <span>✍️</span> 自訂輸入文字測試
@@ -970,6 +1183,35 @@
     </div>
   </div>
 
+  <!-- 模擬電話來電 overlay：響鈴 → 接聽 → 進入逐字稿監聽 -->
+  <div class="incoming-overlay" id="incomingCallOverlay">
+    <div class="phone-box" id="phoneBox">
+      <div class="caller-avatar" id="callerAvatar">📞</div>
+      <div class="caller-label" id="callerLabel">來電</div>
+      <div class="caller-name" id="callerName">未知號碼</div>
+      <div class="caller-number" id="callerNumber">--</div>
+      <div class="caller-tag" id="callerTag">可疑號碼</div>
+      <div class="call-btn-row">
+        <div>
+          <button class="call-btn decline" id="btnDeclineCall" title="拒接">📵</button>
+          <div class="call-btn-label">拒接</div>
+        </div>
+        <div>
+          <button class="call-btn answer" id="btnAnswerCall" title="接聽">📲</button>
+          <div class="call-btn-label" id="answerLabel">接聽</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 通話中浮動狀態條 -->
+  <div class="call-status-pill" id="callStatusPill">
+    <span class="pill-dot"></span>
+    <span id="callSpeakerText">通話中</span>
+    <span class="call-timer" id="callTimerText">00:00</span>
+    <button class="endcall-mini-btn" id="btnHangupCall">📴 掛斷</button>
+  </div>
+
   <!-- JavaScript 核心控制邏輯 -->
   <script>
     // ============================================================
@@ -981,7 +1223,13 @@
       label: 'safe',
       soundEnabled: true,
       audioCtx: null,
-      autoPlayTimer: null,
+      ringInterval: null,
+      autoAnswerTimer: null,
+      callTimerInterval: null,
+      playTimers: [],
+      callSeconds: 0,
+      currentScenario: null,
+      callSeq: 0,
       customQuestion: "咱家的狗叫啥名？"
     };
 
@@ -1029,7 +1277,22 @@
       customTextarea: document.getElementById('customTextarea'),
       btnCloseCustomInput: document.getElementById('btnCloseCustomInput'),
       btnCancelCustomInput: document.getElementById('btnCancelCustomInput'),
-      btnSubmitCustomInput: document.getElementById('btnSubmitCustomInput')
+      btnSubmitCustomInput: document.getElementById('btnSubmitCustomInput'),
+
+      incomingCallOverlay: document.getElementById('incomingCallOverlay'),
+      phoneBox: document.getElementById('phoneBox'),
+      callerAvatar: document.getElementById('callerAvatar'),
+      callerLabel: document.getElementById('callerLabel'),
+      callerName: document.getElementById('callerName'),
+      callerNumber: document.getElementById('callerNumber'),
+      callerTag: document.getElementById('callerTag'),
+      btnAnswerCall: document.getElementById('btnAnswerCall'),
+      answerLabel: document.getElementById('answerLabel'),
+      btnDeclineCall: document.getElementById('btnDeclineCall'),
+      callStatusPill: document.getElementById('callStatusPill'),
+      callSpeakerText: document.getElementById('callSpeakerText'),
+      callTimerText: document.getElementById('callTimerText'),
+      btnHangupCall: document.getElementById('btnHangupCall')
     };
 
     // ============================================================
@@ -1083,6 +1346,7 @@
       if (e.key === 'Escape') {
         hidePasscodeModal();
         hideCustomInputModal();
+        endIncomingCall(false);
       }
     });
 
@@ -1351,7 +1615,7 @@
     // ============================================================
     let accumulatedText = "";
 
-    async function sendScoreRequest(speaker, text, isAccumulated = true) {
+    async function sendScoreRequest(speaker, text, isAccumulated = true, callId = undefined) {
       if (isAccumulated) {
         accumulatedText = accumulatedText ? `${accumulatedText} ${text}` : text;
       } else {
@@ -1372,12 +1636,16 @@
           throw new Error(`伺服器回應錯誤: ${res.status}`);
         }
 
+        // 通話若已結束（序號不同），捨棄遲到的逐字稿，避免訊息亂序
+        if (callId !== undefined && callId !== state.callSeq) return;
+
         const data = await res.json();
         const isFraud = data.label === 'fraud';
         appendTranscript(speaker, text, data.highlight_keywords || [], isFraud);
         updateDashboard(data);
       } catch (err) {
         console.error("呼叫評分 API 失敗:", err);
+        if (callId !== undefined && callId !== state.callSeq) return;
         appendTranscript(speaker, text, [], false);
       }
     }
@@ -1461,97 +1729,242 @@
     });
 
     // ============================================================
-    // 10. 快速示範通話按鈕實作
+    // 10. 模擬電話來電：響鈴 → 接聽 → 逐句監聽 → 掛斷
     // ============================================================
-    function clearAutoPlay() {
-      if (state.autoPlayTimer) {
-        clearTimeout(state.autoPlayTimer);
-        state.autoPlayTimer = null;
+    function clearAllCallTimers() {
+      state.playTimers.forEach(t => clearTimeout(t));
+      state.playTimers = [];
+      if (state.autoAnswerTimer) {
+        clearInterval(state.autoAnswerTimer);
+        state.autoAnswerTimer = null;
+      }
+      if (state.callTimerInterval) {
+        clearInterval(state.callTimerInterval);
+        state.callTimerInterval = null;
+      }
+      stopRingtone();
+    }
+
+    // 響鈴音：Web Audio 合成 440+480Hz 雙音（響 1.45s／停 2.15s），零音檔依賴
+    function startRingtone() {
+      stopRingtone();
+      if (!state.soundEnabled) return;
+      const ringOnce = () => {
+        try {
+          const ctx = getAudioContext();
+          if (!ctx) return;
+          const now = ctx.currentTime;
+          const gain = ctx.createGain();
+          gain.connect(ctx.destination);
+          gain.gain.setValueAtTime(0.0001, now);
+          gain.gain.linearRampToValueAtTime(0.22, now + 0.06);
+          gain.gain.setValueAtTime(0.22, now + 1.35);
+          gain.gain.linearRampToValueAtTime(0.0001, now + 1.45);
+          [440, 480].forEach(freq => {
+            const osc = ctx.createOscillator();
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+            osc.connect(gain);
+            osc.start(now);
+            osc.stop(now + 1.45);
+          });
+        } catch (err) {
+          console.warn("響鈴音播放失敗:", err);
+        }
+      };
+      ringOnce();
+      state.ringInterval = setInterval(ringOnce, 3600);
+    }
+
+    function stopRingtone() {
+      if (state.ringInterval) {
+        clearInterval(state.ringInterval);
+        state.ringInterval = null;
       }
     }
 
-    // 播假檢警電話
-    dom.btnTestFraud.addEventListener('click', () => {
-      clearAutoPlay();
-      accumulatedText = "";
+    // 掛斷音：480+620Hz 忙音短嗶
+    function playHangupTone() {
+      if (!state.soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        const gain = ctx.createGain();
+        gain.connect(ctx.destination);
+        gain.gain.setValueAtTime(0.16, now);
+        gain.gain.setValueAtTime(0.16, now + 0.35);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+        [480, 620].forEach(freq => {
+          const osc = ctx.createOscillator();
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          osc.connect(gain);
+          osc.start(now);
+          osc.stop(now + 0.5);
+        });
+      } catch (err) {
+        console.warn("掛斷音播放失敗:", err);
+      }
+    }
+
+    // 來電劇本登錄：來電者 ID + 逐字稿（對齊 runner 的 FRAUD_SCRIPT / NORMAL_SCRIPT）
+    const CALL_SCENARIOS = {
+      fraud_prosecutor: {
+        avatar: '☎️',
+        callerLabel: '未知市話來電',
+        name: '未知號碼',
+        number: '02-2965-XXXX',
+        tag: '⚠️ 高風險：冒充公務機關話術',
+        speaker: '☎ 騙子（假檢警）',
+        turnDelay: 2600,
+        turns: [
+          "阿嬤你好，我是台北地檢署的檢察官，你名下帳戶涉及洗錢案件，這馬已經分案偵辦，你莫緊張，照我講的做就好。",
+          "你的身分證予人冒用，帳戶已經變成警示戶，裡面的錢愛先領出來，匯到監管帳戶凍結保管，配合調查才袂有代誌。",
+          "這件代誌千萬袂使共別人講，連你孫仔嘛袂使講，電話不要掛斷，你這馬就去銀行匯錢，我會佇線頂陪你。"
+        ]
+      },
+      fraud_guess_who: {
+        avatar: '🕵️',
+        callerLabel: '陌生手機來電',
+        name: '陌生號碼（+886）',
+        number: '+886 975-XXX-XXX',
+        tag: '⚠️ 疑似改號／國際偵測',
+        speaker: '☎ 假親友',
+        turnDelay: 2600,
+        turns: [
+          "阿嬤！猜猜我是誰？我換新的LINE跟手機號碼了啦，你緊共我加入！",
+          "阿嬤，我今仔日佇外面車禍，身上無夠錢賠人，銀行卡又被鎖住，你先匯五萬箍給我應急好無？"
+        ]
+      },
+      normal_grandson: {
+        avatar: '👦',
+        callerLabel: '聯絡人來電',
+        name: '孫子 阿明',
+        number: '0910-***-789',
+        tag: '✅ 通訊錄好友',
+        tagSafe: true,
+        speaker: '👦 孫子阿明',
+        turnDelay: 2400,
+        turns: [
+          "阿嬤，我是阿明啦，呷飽未？我這禮拜六轉去看你，欲煮你上愛呷的苦瓜湯。",
+          "阿公的藥仔有按時呷無？我買一箱牛奶寄轉去，你免出門提，佇厝裡等就好。"
+        ]
+      }
+    };
+
+    // 步驟一：進來電（響鈴畫面 + 6 秒自動接聽倒數）
+    function startIncomingCall(scenarioId) {
+      const sc = CALL_SCENARIOS[scenarioId];
+      if (!sc) return;
+      state.callSeq += 1; // 作廢前一通仍在飛的逐字稿
+      clearAllCallTimers();
+      hidePasscodeModal();
+      state.currentScenario = sc;
+      accumulatedText = '';
       dom.transcriptContainer.innerHTML = '';
-      
-      const turns = [
-        {
-          speaker: "☎ 騙子（假檢警）",
-          text: "阿嬤你好，我是台北地檢署的檢察官，你名下帳戶涉及洗錢案件，這馬已經分案偵辦，你莫緊張，照我講的做就好。",
-          delay: 0
-        },
-        {
-          speaker: "☎ 騙子（假檢警）",
-          text: "你的身分證予人冒用，帳戶已經變成警示戶，裡面的錢愛先領出來，匯到監管帳戶凍結保管，配合調查才袂有代誌。",
-          delay: 2600
-        },
-        {
-          speaker: "☎ 騙子（假檢警）",
-          text: "這件代誌千萬袂使共別人講，連你孫仔嘛袂使講，電話不要掛斷，你這馬就去銀行匯錢，我會佇線頂陪你。",
-          delay: 5600
+
+      dom.callerAvatar.textContent = sc.avatar;
+      dom.callerLabel.textContent = sc.callerLabel;
+      dom.callerName.textContent = sc.name;
+      dom.callerNumber.textContent = sc.number;
+      dom.callerTag.textContent = sc.tag;
+      dom.callerTag.className = 'caller-tag' + (sc.tagSafe ? ' tag-safe' : '');
+      dom.answerLabel.textContent = '接聽';
+
+      dom.phoneBox.classList.add('ringing');
+      dom.incomingCallOverlay.classList.add('show');
+      startRingtone();
+
+      // 6 秒倒數自動接聽（現場沒人點也能進入通話）
+      let countdown = 6;
+      dom.answerLabel.textContent = `接聽（${countdown}）`;
+      state.autoAnswerTimer = setInterval(() => {
+        countdown -= 1;
+        if (countdown <= 0) {
+          if (state.autoAnswerTimer) {
+            clearInterval(state.autoAnswerTimer);
+            state.autoAnswerTimer = null;
+          }
+          answerIncomingCall();
+        } else {
+          dom.answerLabel.textContent = `接聽（${countdown}）`;
         }
-      ];
+      }, 1000);
+    }
 
-      turns.forEach(turn => {
-        setTimeout(() => {
-          sendScoreRequest(turn.speaker, turn.text, true);
-        }, turn.delay);
+    // 步驟二：接通 → 開始逐句推送逐字稿並即時評分
+    function answerIncomingCall() {
+      const sc = state.currentScenario;
+      if (!sc) return;
+      stopRingtone();
+      if (state.autoAnswerTimer) {
+        clearInterval(state.autoAnswerTimer);
+        state.autoAnswerTimer = null;
+      }
+      dom.phoneBox.classList.remove('ringing');
+      dom.incomingCallOverlay.classList.remove('show');
+
+      playAlarmSound('safe'); // 接通提示音
+      dom.callSpeakerText.textContent = `通話中 · ${sc.name}`;
+      dom.callStatusPill.classList.add('show');
+      state.callSeconds = 0;
+      dom.callTimerText.textContent = '00:00';
+      state.callTimerInterval = setInterval(() => {
+        state.callSeconds += 1;
+        const m = String(Math.floor(state.callSeconds / 60)).padStart(2, '0');
+        const s = String(state.callSeconds % 60).padStart(2, '0');
+        dom.callTimerText.textContent = `${m}:${s}`;
+      }, 1000);
+
+      appendTranscript('🛡️ 守門員系統', `電話接通，開始即時監聽（來電：${sc.name} ${sc.number}）`, [], false);
+
+      // 逐句累積文字送 /api/score（10 秒滑動窗口由累積文字模擬）
+      const callId = state.callSeq;
+      let t = 1200;
+      sc.turns.forEach((text, idx) => {
+        const isLast = idx === sc.turns.length - 1;
+        state.playTimers.push(setTimeout(() => {
+          if (callId !== state.callSeq) return;
+          const p = sendScoreRequest(sc.speaker, text, true, callId);
+          // 最後一句評分完成後才自然結束通話，確保「通話結束」訊息永遠在最後
+          if (isLast) {
+            Promise.resolve(p).finally(() => {
+              if (callId !== state.callSeq) return;
+              state.playTimers.push(setTimeout(() => endIncomingCall(false), 1500));
+            });
+          }
+        }, t));
+        t += sc.turnDelay;
       });
-    });
+    }
 
-    // 播猜猜我是誰 (直接觸發密語)
-    dom.btnTestGuessWho.addEventListener('click', () => {
-      clearAutoPlay();
-      accumulatedText = "";
-      dom.transcriptContainer.innerHTML = '';
-
-      const turns = [
-        {
-          speaker: "☎ 假親友",
-          text: "阿嬤！猜猜我是誰？我換新的LINE跟手機號碼了啦，你緊共我加入！",
-          delay: 0
-        },
-        {
-          speaker: "☎ 假親友",
-          text: "阿嬤，我今仔日佇外面車禍，身上無夠錢賠人，銀行卡又被鎖住，你先匯五萬箍給我應急好無？",
-          delay: 2600
+    // 步驟三：掛斷（manual=true 顯示人工掛斷紀錄）
+    function endIncomingCall(manual = false) {
+      const wasInCall = dom.callStatusPill.classList.contains('show');
+      state.callSeq += 1; // 作廢所有進行中通話的遲到逐字稿
+      clearAllCallTimers();
+      dom.callStatusPill.classList.remove('show');
+      dom.incomingCallOverlay.classList.remove('show');
+      dom.phoneBox.classList.remove('ringing');
+      if (wasInCall) {
+        playHangupTone();
+        if (manual) {
+          appendTranscript('📴 通話結束', '阿嬤已掛斷電話，守門員同步寫入告警紀錄並通知子女。', [], true);
+        } else {
+          appendTranscript('📴 通話結束', '對方已結束通話，監聽紀錄留存於本地 log。', [], false);
         }
-      ];
+      }
+    }
 
-      turns.forEach(turn => {
-        setTimeout(() => {
-          sendScoreRequest(turn.speaker, turn.text, true);
-        }, turn.delay);
-      });
-    });
+    dom.btnAnswerCall.addEventListener('click', () => answerIncomingCall());
+    dom.btnDeclineCall.addEventListener('click', () => endIncomingCall(false));
+    dom.btnHangupCall.addEventListener('click', () => endIncomingCall(true));
 
-    // 播孫子問候電話
-    dom.btnTestNormal.addEventListener('click', () => {
-      clearAutoPlay();
-      accumulatedText = "";
-      dom.transcriptContainer.innerHTML = '';
-
-      const turns = [
-        {
-          speaker: "👦 孫子阿明",
-          text: "阿嬤，我是阿明啦，呷飽未？我這禮拜六轉去看你，欲煮你上愛呷的苦瓜湯。",
-          delay: 0
-        },
-        {
-          speaker: "👦 孫子阿明",
-          text: "阿公的藥仔有按時呷無？我買一箱牛奶寄轉去，你免出門提，佇厝裡等就好。",
-          delay: 2400
-        }
-      ];
-
-      turns.forEach(turn => {
-        setTimeout(() => {
-          sendScoreRequest(turn.speaker, turn.text, true);
-        }, turn.delay);
-      });
-    });
+    // 三支示範劇本按鈕：先進來電響鈴，接聽後才播逐字稿
+    dom.btnTestFraud.addEventListener('click', () => startIncomingCall('fraud_prosecutor'));
+    dom.btnTestGuessWho.addEventListener('click', () => startIncomingCall('fraud_guess_who'));
+    dom.btnTestNormal.addEventListener('click', () => startIncomingCall('normal_grandson'));
 
     // 子女端收到 LINE 訊息之模擬視窗
     dom.btnSimulateLineView.addEventListener('click', () => {
