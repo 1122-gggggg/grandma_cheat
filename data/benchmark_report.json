@@ -1,0 +1,1857 @@
+{
+  "timestamp": "2026-09-04T14:12:07.892200",
+  "benchmark_metadata": {
+    "name": "阿嬤的台語反詐守門員 100 筆黃金基準測試集",
+    "version": "2026.1",
+    "total_samples": 100,
+    "positive_fraud_samples": 50,
+    "negative_safe_samples": 50,
+    "environment": {
+      "device": "Laptop CPU (Offline-Ready)",
+      "rules_only": true,
+      "ollama_active": false,
+      "non_chinese_compliance": true
+    }
+  },
+  "metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "avg_latency_ms": 0.35,
+    "total_time_ms": 34.97
+  },
+  "confusion_matrix": {
+    "tp": 50,
+    "fp": 0,
+    "tn": 50,
+    "fn": 0,
+    "actual_positive_total": 50,
+    "actual_negative_total": 50,
+    "fraud_distribution": {
+      "fraud": 48,
+      "suspect": 2
+    },
+    "safe_distribution": {
+      "safe": 50
+    }
+  },
+  "category_breakdown": {
+    "假檢警": {
+      "total": 8,
+      "correct": 8
+    },
+    "假公務": {
+      "total": 10,
+      "correct": 10
+    },
+    "假投資": {
+      "total": 12,
+      "correct": 12
+    },
+    "假親友": {
+      "total": 13,
+      "correct": 13
+    },
+    "假網拍": {
+      "total": 4,
+      "correct": 4
+    },
+    "假求職": {
+      "total": 3,
+      "correct": 3
+    },
+    "日常問候": {
+      "total": 2,
+      "correct": 2
+    },
+    "家庭日常": {
+      "total": 4,
+      "correct": 4
+    },
+    "健康關懷": {
+      "total": 1,
+      "correct": 1
+    },
+    "親友閒聊": {
+      "total": 1,
+      "correct": 1
+    },
+    "生活提醒": {
+      "total": 1,
+      "correct": 1
+    },
+    "台語日常": {
+      "total": 3,
+      "correct": 3
+    },
+    "市場採買": {
+      "total": 3,
+      "correct": 3
+    },
+    "家常料理": {
+      "total": 3,
+      "correct": 3
+    },
+    "鄰里交流": {
+      "total": 2,
+      "correct": 2
+    },
+    "節慶民俗": {
+      "total": 1,
+      "correct": 1
+    },
+    "台語料理": {
+      "total": 1,
+      "correct": 1
+    },
+    "家常生活": {
+      "total": 1,
+      "correct": 1
+    },
+    "醫療看診": {
+      "total": 7,
+      "correct": 7
+    },
+    "復健照護": {
+      "total": 1,
+      "correct": 1
+    },
+    "長照服務": {
+      "total": 1,
+      "correct": 1
+    },
+    "台語醫療": {
+      "total": 1,
+      "correct": 1
+    },
+    "社區廣播": {
+      "total": 1,
+      "correct": 1
+    },
+    "長青活動": {
+      "total": 1,
+      "correct": 1
+    },
+    "志工環保": {
+      "total": 2,
+      "correct": 2
+    },
+    "社區福利": {
+      "total": 1,
+      "correct": 1
+    },
+    "大樓管理": {
+      "total": 1,
+      "correct": 1
+    },
+    "社區防疫": {
+      "total": 1,
+      "correct": 1
+    },
+    "廟宇民俗": {
+      "total": 1,
+      "correct": 1
+    },
+    "台語社區": {
+      "total": 1,
+      "correct": 1
+    },
+    "生活繳費": {
+      "total": 1,
+      "correct": 1
+    },
+    "民生服務": {
+      "total": 1,
+      "correct": 1
+    },
+    "居家修繕": {
+      "total": 1,
+      "correct": 1
+    },
+    "生活休閒": {
+      "total": 3,
+      "correct": 3
+    },
+    "居家生活": {
+      "total": 1,
+      "correct": 1
+    },
+    "台語休閒": {
+      "total": 1,
+      "correct": 1
+    }
+  },
+  "samples": [
+    {
+      "id": "F01",
+      "category": "假檢警",
+      "expected": "positive",
+      "text": "這裡是台北地檢署，我是承辦檢察官，你的案號是115號，涉嫌重大洗錢必須配合偵辦傳票已寄出。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-01",
+        "police-03",
+        "police-04"
+      ],
+      "reasons": [
+        "命中「police-01」：這裡是地檢署，你涉及洗錢案，要把錢轉到監管帳戶配合調查。",
+        "命中「police-03」：我是台北地檢署檢察官，你的證件被冒用洗錢，電話不要掛斷。",
+        "命中「police-04」：你涉嫌洗錢防制法，帳戶金流異常，要繳保證金證明清白。"
+      ],
+      "latency_ms": 10.357,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F02",
+      "category": "假檢警",
+      "expected": "positive",
+      "text": "你的銀行帳戶被列為警示戶，所有存款要立刻轉到法務部監管帳戶凍結保管，否則會收押。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-02",
+        "police-07",
+        "invest-04"
+      ],
+      "reasons": [
+        "命中「police-02」：你的帳戶被列為警示戶，錢要先匯到監管帳戶凍結保管。",
+        "命中「police-07」：法務部行政執行署通知，你有逾期未繳公法款項，今日內若未清償將強制扣押名下所有不動產與存款。",
+        "命中「invest-04」：你要出金必須先繳 20% 的稅金和手續費，否則帳戶會被永久凍結。"
+      ],
+      "latency_ms": 0.513,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F03",
+      "category": "假檢警",
+      "expected": "positive",
+      "text": "台北地檢署通知，你身分證件遭人冒用洗錢，現在電話不要掛斷，立刻配合調查核對資金。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-03",
+        "police-04"
+      ],
+      "reasons": [
+        "命中「police-03」：我是台北地檢署檢察官，你的證件被冒用洗錢，電話不要掛斷。",
+        "命中「police-04」：你涉嫌洗錢防制法，帳戶金流異常，要繳保證金證明清白。"
+      ],
+      "latency_ms": 0.391,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F04",
+      "category": "假檢警",
+      "expected": "positive",
+      "text": "先生你涉嫌洗錢防制法重大金流異常，偵辦不公開，限今日繳交保證金證明清白。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-01",
+        "police-04"
+      ],
+      "reasons": [
+        "命中「police-01」：這裡是地檢署，你涉及洗錢案，要把錢轉到監管帳戶配合調查。",
+        "命中「police-04」：你涉嫌洗錢防制法，帳戶金流異常，要繳保證金證明清白。"
+      ],
+      "latency_ms": 0.286,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F05",
+      "category": "假公務",
+      "expected": "positive",
+      "text": "這裡是信義區戶政事務所，有人持你的身分證被冒用要委託辦理全戶戶籍謄本，請立刻核對個資。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-03",
+        "police-05"
+      ],
+      "reasons": [
+        "命中「police-03」：我是台北地檢署檢察官，你的證件被冒用洗錢，電話不要掛斷。",
+        "命中「police-05」：這裡是戶政事務所，有人拿你的身分證委託辦理戶籍謄本與過戶，懷疑個資遭冒用涉案。"
+      ],
+      "latency_ms": 0.282,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F06",
+      "category": "假公務",
+      "expected": "positive",
+      "text": "健保局通知，你的健保卡在南部醫院重複請領醫療補助涉及詐領補助，違規使用即刻停卡。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-06",
+        "family-01"
+      ],
+      "reasons": [
+        "命中「police-06」：健保局通知，你的健保卡違規使用遭停卡，且涉嫌詐領醫療補助款，即將移送法辦。",
+        "命中「family-01」：阿嬤，我出車禍在醫院，需要開刀，快匯十萬塊到這個帳號！"
+      ],
+      "latency_ms": 0.237,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F07",
+      "category": "假公務",
+      "expected": "positive",
+      "text": "法務部行政執行署公文通知，你名下財產將強制執行強制扣押，請於今日前清償款項查封財產。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-07"
+      ],
+      "reasons": [
+        "命中「police-07」：法務部行政執行署通知，你有逾期未繳公法款項，今日內若未清償將強制扣押名下所有不動產與存款。"
+      ],
+      "latency_ms": 0.227,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F08",
+      "category": "假檢警",
+      "expected": "positive",
+      "text": "地檢署檢察官林主任在此，你名下涉嫌洗錢人頭帳戶，現在依傳票進行偵辦。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-01",
+        "police-03",
+        "police-04"
+      ],
+      "reasons": [
+        "命中「police-01」：這裡是地檢署，你涉及洗錢案，要把錢轉到監管帳戶配合調查。",
+        "命中「police-03」：我是台北地檢署檢察官，你的證件被冒用洗錢，電話不要掛斷。",
+        "命中「police-04」：你涉嫌洗錢防制法，帳戶金流異常，要繳保證金證明清白。"
+      ],
+      "latency_ms": 0.349,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F09",
+      "category": "假檢警",
+      "expected": "positive",
+      "text": "警政署刑事局警告，你的戶頭金流異常涉及海外洗錢，若不配合調查將依法凍結名下帳戶。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-02",
+        "police-03",
+        "police-04"
+      ],
+      "reasons": [
+        "命中「police-02」：你的帳戶被列為警示戶，錢要先匯到監管帳戶凍結保管。",
+        "命中「police-03」：我是台北地檢署檢察官，你的證件被冒用洗錢，電話不要掛斷。",
+        "命中「police-04」：你涉嫌洗錢防制法，帳戶金流異常，要繳保證金證明清白。"
+      ],
+      "latency_ms": 0.215,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F10",
+      "category": "假公務",
+      "expected": "positive",
+      "text": "戶政事務所專員通知，剛才有人冒用你的身分證要辦印鑑證明，個資遭冒用請跟檢警報案。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-03",
+        "police-05"
+      ],
+      "reasons": [
+        "命中「police-03」：我是台北地檢署檢察官，你的證件被冒用洗錢，電話不要掛斷。",
+        "命中「police-05」：這裡是戶政事務所，有人拿你的身分證委託辦理戶籍謄本與過戶，懷疑個資遭冒用涉案。"
+      ],
+      "latency_ms": 0.218,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F11",
+      "category": "假公務",
+      "expected": "positive",
+      "text": "健保卡異常通知：系統查出你這月有三筆違規使用，健保局將派員查封並通報檢調。",
+      "score": 0.9,
+      "label": "fraud",
+      "matched": [
+        "police-06"
+      ],
+      "reasons": [
+        "命中「police-06」：健保局通知，你的健保卡違規使用遭停卡，且涉嫌詐領醫療補助款，即將移送法辦。"
+      ],
+      "latency_ms": 0.208,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F12",
+      "category": "假公務",
+      "expected": "positive",
+      "text": "行政執行署通知，你逾期未繳滯納金，今日下午將向法院聲請強制扣押薪資與存款。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-07"
+      ],
+      "reasons": [
+        "命中「police-07」：法務部行政執行署通知，你有逾期未繳公法款項，今日內若未清償將強制扣押名下所有不動產與存款。"
+      ],
+      "latency_ms": 0.213,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F13",
+      "category": "假檢警",
+      "expected": "positive",
+      "text": "kiám-chhat-koaⁿ kóng lí sia̍p-hiâm sé-chîⁿ àn-kiāⁿ, ài phòe-ha̍p tē-kiám-sú kiam-chè tiàu-cha.",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-01",
+        "police-03"
+      ],
+      "reasons": [
+        "命中「police-01」：這裡是地檢署，你涉及洗錢案，要把錢轉到監管帳戶配合調查。",
+        "命中「police-03」：我是台北地檢署檢察官，你的證件被冒用洗錢，電話不要掛斷。"
+      ],
+      "latency_ms": 0.24,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F14",
+      "category": "假檢警",
+      "expected": "positive",
+      "text": "kàm-koán tiùⁿ-hō͘ pó-koán chîⁿ, lí ê tiùⁿ-hō͘ í-keng kéng-sī-hō͘ tòng-kiat ah!",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-02",
+        "invest-04",
+        "family-02"
+      ],
+      "reasons": [
+        "命中「police-02」：你的帳戶被列為警示戶，錢要先匯到監管帳戶凍結保管。",
+        "命中「invest-04」：你要出金必須先繳 20% 的稅金和手續費，否則帳戶會被永久凍結。",
+        "命中「family-02」：阿嬤，我有一筆急用錢，不要跟爸媽說，現在馬上匯給我好不好？"
+      ],
+      "latency_ms": 0.285,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F15",
+      "category": "假公務",
+      "expected": "positive",
+      "text": "kiān-pó-kio̍k lâi-tiān, kóng lí ê kiān-pó-khah chà-niá pó͘-chō͘, kin-á-ji̍t ài thêng-khah.",
+      "score": 0.9,
+      "label": "fraud",
+      "matched": [
+        "police-06"
+      ],
+      "reasons": [
+        "命中「police-06」：健保局通知，你的健保卡違規使用遭停卡，且涉嫌詐領醫療補助款，即將移送法辦。"
+      ],
+      "latency_ms": 0.213,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F16",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "陳董介紹這檔AI飆股保證獲利百分之三十，現在立即加碼投資，下個月本金直接翻倍！",
+      "score": 0.8,
+      "label": "fraud",
+      "matched": [
+        "invest-01"
+      ],
+      "reasons": [
+        "命中「invest-01」：加入我們的 VIP 投資群組，保證獲利，每個月穩穩翻倍。"
+      ],
+      "latency_ms": 0.251,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F17",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "內部高報酬理財方案穩賺不賠，今天截止入金名額，錯過就沒了，帶你一起賺大錢。",
+      "score": 0.9,
+      "label": "fraud",
+      "matched": [
+        "invest-02"
+      ],
+      "reasons": [
+        "命中「invest-02」：這個方案穩賺不賠、高報酬，今天入金還有特別優惠，錯過就沒了。"
+      ],
+      "latency_ms": 1.055,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F18",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "加入VIP群組由專業老師帶單操作虛擬貨幣，上百位學員都賺到了，保證有高收益。",
+      "score": 0.8,
+      "label": "fraud",
+      "matched": [
+        "invest-03"
+      ],
+      "reasons": [
+        "命中「invest-03」：老師每天在群組帶單做虛擬貨幣，跟著操作的學員都賺大錢。"
+      ],
+      "latency_ms": 0.304,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F19",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "你的海外投資平台獲利要出金，必須先繳納百分之二十稅金與手續費，否則帳戶凍結。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-02",
+        "invest-01",
+        "invest-04"
+      ],
+      "reasons": [
+        "命中「police-02」：你的帳戶被列為警示戶，錢要先匯到監管帳戶凍結保管。",
+        "命中「invest-01」：加入我們的 VIP 投資群組，保證獲利，每個月穩穩翻倍。",
+        "命中「invest-04」：你要出金必須先繳 20% 的稅金和手續費，否則帳戶會被永久凍結。"
+      ],
+      "latency_ms": 0.248,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F20",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "買泰達幣最安全，我們約在超商線下面交USDT，專業幣商OTC場外交易不用手續費。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "invest-04",
+        "invest-05"
+      ],
+      "reasons": [
+        "命中「invest-04」：你要出金必須先繳 20% 的稅金和手續費，否則帳戶會被永久凍結。",
+        "命中「invest-05」：購買低價 USDT 泰達幣，專員安排實體超商或咖啡廳面交 OTC，現金一手交錢一手轉幣。"
+      ],
+      "latency_ms": 0.236,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F21",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "國際黃金期貨群組每天晚上帶盤操作外匯操盤，跟隨老師指令下單保證穩賺。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "invest-03",
+        "invest-06"
+      ],
+      "reasons": [
+        "命中「invest-03」：老師每天在群組帶單做虛擬貨幣，跟著操作的學員都賺大錢。",
+        "命中「invest-06」：加入海外黃金期貨與外匯操盤群組，香港分析師帶盤操作，勝率百分之九十五。"
+      ],
+      "latency_ms": 0.225,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F22",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "恭喜先生抽中股票未上市股票十張，假券商專員通知需在三日內匯入認購款保留額度。",
+      "score": 0.95,
+      "label": "fraud",
+      "matched": [
+        "invest-07"
+      ],
+      "reasons": [
+        "命中「invest-07」：恭喜抽中未上市潛力股票，配合特定券商專案保留額度，需於三日內補足認購款。"
+      ],
+      "latency_ms": 0.229,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F23",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "這支生技新股申購保留額度有限，保證獲利翻倍，現在加碼投資穩賺不賠。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "invest-01",
+        "invest-02",
+        "invest-07"
+      ],
+      "reasons": [
+        "命中「invest-01」：加入我們的 VIP 投資群組，保證獲利，每個月穩穩翻倍。",
+        "命中「invest-02」：這個方案穩賺不賠、高報酬，今天入金還有特別優惠，錯過就沒了。",
+        "命中「invest-07」：恭喜抽中未上市潛力股票，配合特定券商專案保留額度，需於三日內補足認購款。"
+      ],
+      "latency_ms": 0.223,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F24",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "虛擬貨幣量化交易，老師帶單保證日息一點五趴，快點加碼入金跟上這一波。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "invest-01",
+        "invest-02",
+        "invest-03"
+      ],
+      "reasons": [
+        "命中「invest-01」：加入我們的 VIP 投資群組，保證獲利，每個月穩穩翻倍。",
+        "命中「invest-02」：這個方案穩賺不賠、高報酬，今天入金還有特別優惠，錯過就沒了。",
+        "命中「invest-03」：老師每天在群組帶單做虛擬貨幣，跟著操作的學員都賺大錢。"
+      ],
+      "latency_ms": 0.233,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F25",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "pó-chèng he̍k-lī bô hong-hiám, chit-má ke-bé tâu-chu, bīn-á-chài tio̍h hoan-pōe!",
+      "score": 0.8,
+      "label": "fraud",
+      "matched": [
+        "invest-01"
+      ],
+      "reasons": [
+        "命中「invest-01」：加入我們的 VIP 投資群組，保證獲利，每個月穩穩翻倍。"
+      ],
+      "latency_ms": 0.22,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F26",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "ún-thàn bē-sún ê ko-pò-siû ki-hōe, chhia-chài bōe ji̍p-kim tio̍h chhò-kòe ah.",
+      "score": 0.9,
+      "label": "fraud",
+      "matched": [
+        "invest-02"
+      ],
+      "reasons": [
+        "命中「invest-02」：這個方案穩賺不賠、高報酬，今天入金還有特別優惠，錯過就沒了。"
+      ],
+      "latency_ms": 0.209,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F27",
+      "category": "假投資",
+      "expected": "positive",
+      "text": "n̂g-kim kî-hòe kûn-cho͘ chhau-pôaⁿ, lāu-su chhōa-toaⁿ thàn-tōa-chîⁿ.",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "invest-03",
+        "invest-06"
+      ],
+      "reasons": [
+        "命中「invest-03」：老師每天在群組帶單做虛擬貨幣，跟著操作的學員都賺大錢。",
+        "命中「invest-06」：加入海外黃金期貨與外匯操盤群組，香港分析師帶盤操作，勝率百分之九十五。"
+      ],
+      "latency_ms": 0.241,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F28",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "阿嬤我是志豪啦，我跟朋友在外面出車禍了，人現在醫院急需開刀，趕快匯錢過來救我！",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "family-01",
+        "family-02"
+      ],
+      "reasons": [
+        "命中「family-01」：阿嬤，我出車禍在醫院，需要開刀，快匯十萬塊到這個帳號！",
+        "命中「family-02」：阿嬤，我有一筆急用錢，不要跟爸媽說，現在馬上匯給我好不好？"
+      ],
+      "latency_ms": 0.222,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F29",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "媽我現在急用錢，這件事千萬不要跟別人說，快匯十萬到這個銀行帳號，拜託啦！",
+      "score": 0.8,
+      "label": "fraud",
+      "matched": [
+        "family-02"
+      ],
+      "reasons": [
+        "命中「family-02」：阿嬤，我有一筆急用錢，不要跟爸媽說，現在馬上匯給我好不好？"
+      ],
+      "latency_ms": 0.209,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F30",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "阿公是我！我換手機視訊借錢鏡頭壞掉看不到臉，AI變聲聲音有點怪，急需五萬借錢週轉。",
+      "score": 0.9,
+      "label": "fraud",
+      "matched": [
+        "family-03"
+      ],
+      "reasons": [
+        "命中「family-03」：媽！我視訊鏡頭壞掉聲音有點沙啞，我換新手機用AI降噪啦，我急需借錢週轉應急，帳號傳給你了！"
+      ],
+      "latency_ms": 0.224,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F31",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "姑姑我寄的海外包裹被海關扣留了，包裹被扣要代收包裹請先幫忙補繳關稅兩萬元。",
+      "score": 0.85,
+      "label": "fraud",
+      "matched": [
+        "family-04"
+      ],
+      "reasons": [
+        "命中「family-04」：姑姑，我從國外寄了貴重海外包裹給你，但是卡在海關扣留，要先代收代墊關稅保證金才能放行。"
+      ],
+      "latency_ms": 0.197,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F32",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "阿嬤，我手機壞了換號碼了，這是我新號碼你存起來，猜猜我是誰，以後打這支喔。",
+      "score": 0.75,
+      "label": "suspect",
+      "matched": [
+        "family-05"
+      ],
+      "reasons": [
+        "命中「family-05」：我換電話號碼了，原本的手機壞掉了，你先存這個新號碼，猜猜我是誰。"
+      ],
+      "latency_ms": 0.23,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F33",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "你兒子被我們綁架了！準備現金三百萬贖人，敢報警就立刻撕票，聽到了沒有！",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "family-06"
+      ],
+      "reasons": [
+        "命中「family-06」：你兒子在我手上，限你半小時內匯款五百萬贖人，敢報警就撕票。"
+      ],
+      "latency_ms": 0.221,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F34",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "叔叔我開公司差週轉金，廠商催款明天要付工程款，能不能急借週轉先幫我頂一下？",
+      "score": 0.8,
+      "label": "fraud",
+      "matched": [
+        "family-08"
+      ],
+      "reasons": [
+        "命中「family-08」：阿公，我跟朋友合夥工程款差十萬周轉，廠商在催款，今天沒付會違約被扣押。"
+      ],
+      "latency_ms": 0.21,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F35",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "阿姨我有個賺錢門路，借存摺借帳戶給朋友公司做人頭戶過水，一個月給妳三萬紅包。",
+      "score": 0.85,
+      "label": "fraud",
+      "matched": [
+        "family-07"
+      ],
+      "reasons": [
+        "命中「family-07」：舅舅，我公司要做外匯審查，借你的存摺印鑑與提款卡過水一下，下週就還你。"
+      ],
+      "latency_ms": 0.208,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F36",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "chhia-hō khui-to kip-su! a-má lí kín hōe-chîⁿ lâi i-īⁿ kiù góa!",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "family-01",
+        "family-02"
+      ],
+      "reasons": [
+        "命中「family-01」：阿嬤，我出車禍在醫院，需要開刀，快匯十萬塊到這個帳號！",
+        "命中「family-02」：阿嬤，我有一筆急用錢，不要跟爸媽說，現在馬上匯給我好不好？"
+      ],
+      "latency_ms": 0.221,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F37",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "a-bú, góa kip-iōng-chîⁿ, mài kā pa-bú kóng, kín hōe-chîⁿ kòe-lâi tiùⁿ-hō.",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "family-01",
+        "family-02"
+      ],
+      "reasons": [
+        "命中「family-01」：阿嬤，我出車禍在醫院，需要開刀，快匯十萬塊到這個帳號！",
+        "命中「family-02」：阿嬤，我有一筆急用錢，不要跟爸媽說，現在馬上匯給我好不好？"
+      ],
+      "latency_ms": 0.326,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F38",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "ōaⁿ tiān-ōe hō-bé ah, chhiú-ki pháiⁿ--khì, sin hō-bé ài chûn--khí-lâi io̍h-chhaiⁿ góa sī siáⁿ-lâng.",
+      "score": 0.75,
+      "label": "suspect",
+      "matched": [
+        "family-05"
+      ],
+      "reasons": [
+        "命中「family-05」：我換電話號碼了，原本的手機壞掉了，你先存這個新號碼，猜猜我是誰。"
+      ],
+      "latency_ms": 0.312,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F39",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "kang-thêng-khoán chhui-khoán, chiu-choán su-iàu chîⁿ, a-peh chioh-góa kà-chhiok.",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "family-03",
+        "family-08"
+      ],
+      "reasons": [
+        "命中「family-03」：媽！我視訊鏡頭壞掉聲音有點沙啞，我換新手機用AI降噪啦，我急需借錢週轉應急，帳號傳給你了！",
+        "命中「family-08」：阿公，我跟朋友合夥工程款差十萬周轉，廠商在催款，今天沒付會違約被扣押。"
+      ],
+      "latency_ms": 0.276,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F40",
+      "category": "假親友",
+      "expected": "positive",
+      "text": "páng-kè lí kíaⁿ, pún-chîⁿ bô the̍h lâi siok-jîn tio̍h si-phiò, mài pò-kéng!",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "family-06"
+      ],
+      "reasons": [
+        "命中「family-06」：你兒子在我手上，限你半小時內匯款五百萬贖人，敢報警就撕票。"
+      ],
+      "latency_ms": 0.28,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F41",
+      "category": "假網拍",
+      "expected": "positive",
+      "text": "您在網路商城購物作業人員疏失設成分期付款，會重複扣款，請立刻去ATM操作解除分期。",
+      "score": 0.9,
+      "label": "fraud",
+      "matched": [
+        "shopping-01"
+      ],
+      "reasons": [
+        "命中「shopping-01」：您好，這裡是購物客服，因系統誤設為分期付款批發商，需至 ATM 依指示操作解除分期扣款。"
+      ],
+      "latency_ms": 0.245,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F42",
+      "category": "假網拍",
+      "expected": "positive",
+      "text": "蝦皮賣家您好，因未開通金流簽署金流協定，目前賣場凍結，請聯絡客服完成賣家認證。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-02",
+        "shopping-02"
+      ],
+      "reasons": [
+        "命中「police-02」：你的帳戶被列為警示戶，錢要先匯到監管帳戶凍結保管。",
+        "命中「shopping-02」：買家反映無法下單，請點擊連結簽署金流服務協議與賣家實名認證，否則凍結賣場帳號。"
+      ],
+      "latency_ms": 0.236,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F43",
+      "category": "假網拍",
+      "expected": "positive",
+      "text": "郵局ATM操作解除重複扣款：請插入金融卡依照指示輸入密碼，才能解除分期付款設定。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "invest-02",
+        "shopping-01"
+      ],
+      "reasons": [
+        "命中「invest-02」：這個方案穩賺不賠、高報酬，今天入金還有特別優惠，錯過就沒了。",
+        "命中「shopping-01」：您好，這裡是購物客服，因系統誤設為分期付款批發商，需至 ATM 依指示操作解除分期扣款。"
+      ],
+      "latency_ms": 0.236,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F44",
+      "category": "假網拍",
+      "expected": "positive",
+      "text": "買家認證系統升級，請點擊認證協議連結完成身分認證，避免賣場凍結與商品下架。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-02",
+        "shopping-02"
+      ],
+      "reasons": [
+        "命中「police-02」：你的帳戶被列為警示戶，錢要先匯到監管帳戶凍結保管。",
+        "命中「shopping-02」：買家反映無法下單，請點擊連結簽署金流服務協議與賣家實名認證，否則凍結賣場帳號。"
+      ],
+      "latency_ms": 0.233,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F45",
+      "category": "假公務",
+      "expected": "positive",
+      "text": "自來水公司緊急通知：您的水費逾期催繳，若今日二十四時前未繳清將停水，請點擊連結繳費。",
+      "score": 0.8,
+      "label": "fraud",
+      "matched": [
+        "utility-01"
+      ],
+      "reasons": [
+        "命中「utility-01」：自來水公司催繳通知：您有上期水費逾期未繳，請於今日前點擊簡訊連結繳費，逾期將派員停水。"
+      ],
+      "latency_ms": 0.234,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F46",
+      "category": "假公務",
+      "expected": "positive",
+      "text": "交通違規催繳通知：您有一筆超速罰單罰鍰逾期未結清，即日起吊扣駕照並加處重罰。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "utility-01",
+        "utility-02"
+      ],
+      "reasons": [
+        "命中「utility-01」：自來水公司催繳通知：您有上期水費逾期未繳，請於今日前點擊簡訊連結繳費，逾期將派員停水。",
+        "命中「utility-02」：交通違規罰鍰逾期催繳通知，請儘速繳納罰款以免加處罰鍰或移送強制執行吊扣駕照。"
+      ],
+      "latency_ms": 0.223,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F47",
+      "category": "假公務",
+      "expected": "positive",
+      "text": "台電電力公司簡訊：用戶電費逾期催繳通知，請立即線上轉帳免遭停電處分。",
+      "score": 0.8,
+      "label": "fraud",
+      "matched": [
+        "utility-01"
+      ],
+      "reasons": [
+        "命中「utility-01」：自來水公司催繳通知：您有上期水費逾期未繳，請於今日前點擊簡訊連結繳費，逾期將派員停水。"
+      ],
+      "latency_ms": 0.225,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F48",
+      "category": "假求職",
+      "expected": "positive",
+      "text": "誠徵家庭代工手鍊組裝，在家作業每週可領一萬五，寄送存摺審核免收材料保證金。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-04",
+        "job-01"
+      ],
+      "reasons": [
+        "命中「police-04」：你涉嫌洗錢防制法，帳戶金流異常，要繳保證金證明清白。",
+        "命中「job-01」：居家手工代工包裝，免經驗月入數萬，需先寄送存摺提款卡審核或預繳材料保證金。"
+      ],
+      "latency_ms": 0.26,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F49",
+      "category": "假求職",
+      "expected": "positive",
+      "text": "手機兼職點讚刷單賺現金，只要完成商家評分任務返現，每日現領高額佣金輕鬆賺。",
+      "score": 0.8,
+      "label": "fraud",
+      "matched": [
+        "job-02"
+      ],
+      "reasons": [
+        "命中「job-02」：招募線上電商點讚刷單員，完成一單返現十趴，動動手指輕鬆日賺五千元兼職。"
+      ],
+      "latency_ms": 0.237,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "F50",
+      "category": "假求職",
+      "expected": "positive",
+      "text": "家庭代工包裝徵人，每組手工件補貼五百，需先繳納代工保證金完成材料申請。",
+      "score": 1.0,
+      "label": "fraud",
+      "matched": [
+        "police-04",
+        "job-01"
+      ],
+      "reasons": [
+        "命中「police-04」：你涉嫌洗錢防制法，帳戶金流異常，要繳保證金證明清白。",
+        "命中「job-01」：居家手工代工包裝，免經驗月入數萬，需先寄送存摺提款卡審核或預繳材料保證金。"
+      ],
+      "latency_ms": 0.233,
+      "predicted_positive": true,
+      "actual_positive": true
+    },
+    {
+      "id": "N01",
+      "category": "日常問候",
+      "expected": "negative",
+      "text": "阿嬤，你今天中午吃飽沒？外面風很大，出門要記得多穿一件外套保暖喔。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.226,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N02",
+      "category": "家庭日常",
+      "expected": "negative",
+      "text": "媽我剛下班在捷運上了，晚上會回家吃晚飯，簡單煮個地瓜稀飯配醬瓜就好。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.226,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N03",
+      "category": "家庭日常",
+      "expected": "negative",
+      "text": "阿公，我們大學期末考考完了，這個禮拜天我跟妹妹會回老家看你們。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.231,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N04",
+      "category": "健康關懷",
+      "expected": "negative",
+      "text": "爸，早上的降血壓藥有沒有按時吃？天氣變冷血壓容易高，記得量一下血壓記在本子上。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.223,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N05",
+      "category": "日常問候",
+      "expected": "negative",
+      "text": "阿母啊，今天菜園裡的絲瓜採收了三條，等等我拿一條過去放在你家門口。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.223,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N06",
+      "category": "家庭日常",
+      "expected": "negative",
+      "text": "孫女打電話來說在台北實習適應得不錯，宿舍室友也很熱心，叫阿嬤不用掛心。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.221,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N07",
+      "category": "親友閒聊",
+      "expected": "negative",
+      "text": "陳老弟，明天早上天氣不錯，要不要一起去十八尖山爬山走路，順便去涼亭泡烏龍茶？",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.23,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N08",
+      "category": "生活提醒",
+      "expected": "negative",
+      "text": "氣象報告說下午開始有東北季風會飄小雨，曬在頂樓陽台的棉被衣物記得收進來。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.228,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N09",
+      "category": "家庭日常",
+      "expected": "negative",
+      "text": "阿妹，今晚要不要回家喝雞湯？阿嬤特地燉了一鍋香菇土雞湯，留兩碗在電鍋保溫。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.226,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N10",
+      "category": "台語日常",
+      "expected": "negative",
+      "text": "a-má lí chia̍h-pá--bē? kin-á-ji̍t khì-un piàn-léng, chhut-mn̂g ài chhēng chēng-chē saⁿ.",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.227,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N11",
+      "category": "台語日常",
+      "expected": "negative",
+      "text": "a-kong, góa chú-ji̍t ài chhoā gín-á tò-tńg-lâi khòaⁿ lí, lí siūⁿ-beh chia̍h siáⁿ-hòe?",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.228,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N12",
+      "category": "台語日常",
+      "expected": "negative",
+      "text": "thian-khì chin hó, góa lâi kā hoe-chháu chhiū-á tì-chúi, khì-chhia iā kā sé--sé--leh.",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.239,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N13",
+      "category": "市場採買",
+      "expected": "negative",
+      "text": "早上跟對面阿秀去早市買菜，今天黑毛豬五花肉很漂亮，買了兩斤回來做紅燒肉。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.229,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N14",
+      "category": "市場採買",
+      "expected": "negative",
+      "text": "市場今天高麗菜兩顆才五十元真便宜，菜販還多送我一把青蔥跟九層塔。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.219,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N15",
+      "category": "家常料理",
+      "expected": "negative",
+      "text": "今天中午自己煮了絲瓜麵線跟苦瓜排骨湯，甘甜清爽又退火，吃得很飽。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.219,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N16",
+      "category": "家常料理",
+      "expected": "negative",
+      "text": "下午要去全聯買一瓶蔭油跟一包台東池上米，家裡煮飯的白米快要見底了。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.222,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N17",
+      "category": "鄰里交流",
+      "expected": "negative",
+      "text": "鄰居林太太下午採了一籃自家種的無農藥芭樂和木瓜，送來幾顆跟我們分享。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.259,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N18",
+      "category": "節慶民俗",
+      "expected": "negative",
+      "text": "明天冬至要做湯圓，阿嬤準備了糯米粉，打算揉紅白小湯圓再煮紅豆甜湯。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.22,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N19",
+      "category": "市場採買",
+      "expected": "negative",
+      "text": "魚攤阿吉今天進了新鮮的澎湖透抽跟秋刀魚，我挑了三尾抹鹽乾煎很香。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.227,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N20",
+      "category": "台語料理",
+      "expected": "negative",
+      "text": "chhài-chhī-á ê chhài chin siok, góa bé liáu chin chē chhài-thâu kah hoan-kiê.",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.286,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N21",
+      "category": "家常生活",
+      "expected": "negative",
+      "text": "晚餐吃飽了，阿公在客廳看電視新聞，阿嬤在廚房洗碗刷鍋子整理乾淨。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.221,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N22",
+      "category": "家常料理",
+      "expected": "negative",
+      "text": "今天天氣悶熱，特地用大同電鍋熬了一大鍋綠豆薏仁湯，冰在冰箱退火剛剛好。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.23,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N23",
+      "category": "醫療看診",
+      "expected": "negative",
+      "text": "慈濟心臟內科定期看診已經掛號完成，下週二早上九點半到第二診區候診。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.214,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N24",
+      "category": "醫療看診",
+      "expected": "negative",
+      "text": "衛生所來電通知，六十五歲以上長者本週可以攜帶身分證明去施打免費流感疫苗。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.387,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N25",
+      "category": "醫療看診",
+      "expected": "negative",
+      "text": "榮總志工來電提醒，上個月抽血檢查的肝腎功能指數報告已經出來了，回診時醫師會說明。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.224,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N26",
+      "category": "醫療看診",
+      "expected": "negative",
+      "text": "美德牙醫診所預約提醒：林先生明天下午三點半洗牙與定期口腔健康檢查。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.223,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N27",
+      "category": "醫療看診",
+      "expected": "negative",
+      "text": "社區健保特約藥局藥師提醒，您的慢性病連續處方箋第二個月可以來調劑領取藥品。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.218,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N28",
+      "category": "醫療看診",
+      "expected": "negative",
+      "text": "眼科診所定期追蹤：視網膜與黃斑部常規檢查，請攜帶老花眼鏡於週四下午看診。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.219,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N29",
+      "category": "復健照護",
+      "expected": "negative",
+      "text": "復健科物理治療師交代，阿公雙膝退化性關節炎每天下午要做直抬腿運動十五分鐘。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.213,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N30",
+      "category": "長照服務",
+      "expected": "negative",
+      "text": "長青長照中心居服員來電確認，明天上午十點會準時到府協助長輩洗澡與居家打掃。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.216,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N31",
+      "category": "台語醫療",
+      "expected": "negative",
+      "text": "i-seng kóng thn̂g-jiō-pēⁿ khòng-chè liáu chin hó, kè-sio̍k chiàu-sî chia̍h-io̍h tio̍h hó.",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.228,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N32",
+      "category": "醫療看診",
+      "expected": "negative",
+      "text": "大門診醫師交代，明天早上照腹部超音波檢查，從半夜十二點開始要完全空腹不能喝水。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.211,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N33",
+      "category": "社區廣播",
+      "expected": "negative",
+      "text": "里長辦公處廣播：本週六上午九點在活動中心舉辦銀髮族免費量血壓與體適能檢測。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.229,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N34",
+      "category": "長青活動",
+      "expected": "negative",
+      "text": "社區發展協會通知：長青學苑春季插花與書法班下週一正式開課，歡迎學員準時報到。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.215,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N35",
+      "category": "志工環保",
+      "expected": "negative",
+      "text": "環保志工隊隊長提醒：這個星期日清晨六點在社區小公園集合，打掃落葉美化環境。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.229,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N36",
+      "category": "社區福利",
+      "expected": "negative",
+      "text": "里長辦公室通知：重陽節敬老禮金已開始發放，符合資格的長輩請持私章到里辦公室領取。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.211,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N37",
+      "category": "大樓管理",
+      "expected": "negative",
+      "text": "大樓管理室通知：七樓住戶有一封郵局平信與水電費通知聯，請於下樓時順便領取。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.225,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N38",
+      "category": "鄰里交流",
+      "expected": "negative",
+      "text": "公園土風舞隊隊長打電話約阿嬤，每天早晨六點半在榕樹下做晨間伸展體操。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.219,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N39",
+      "category": "志工環保",
+      "expected": "negative",
+      "text": "慈濟環保資源回收站志工師姐問候，每週四上午在巷口回收紙箱與塑膠瓶。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.222,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N40",
+      "category": "社區防疫",
+      "expected": "negative",
+      "text": "里辦公處廣播：為防治登革熱，全里巷道明天下午兩點進行環境消毒，請住戶緊閉門窗。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.214,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N41",
+      "category": "廟宇民俗",
+      "expected": "negative",
+      "text": "福德宮管委會主委通知：今年土地公繞境平安祈福活動，香油緣金的收據已經開立完成。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.21,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N42",
+      "category": "台語社區",
+      "expected": "negative",
+      "text": "lí-tiúⁿ kóng-pò͘: āu-lé-pài liok-ji̍t oa̍h-tāng tiong-sim ū bián-hùi kiān-khong kiám-cha.",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.233,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N43",
+      "category": "生活繳費",
+      "expected": "negative",
+      "text": "中華電信市內電話簡訊帳單通知：本月份通話費用兩百八十元已順利自動轉帳繳清。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.215,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N44",
+      "category": "民生服務",
+      "expected": "negative",
+      "text": "三順瓦斯行通知：下午兩點半會將叫的二十公斤桶裝瓦斯送達廚房，並協助更換管線。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.218,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N45",
+      "category": "居家修繕",
+      "expected": "negative",
+      "text": "水電師傅林先生來電：今天下午四點會過去修理陽台洗衣機水龍頭滲水與更換墊片。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.213,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N46",
+      "category": "生活休閒",
+      "expected": "negative",
+      "text": "客廳電視遙控器按鈕沒反應好像沒電了，等一下散步去便利商店買兩顆四號電池。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.217,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N47",
+      "category": "生活休閒",
+      "expected": "negative",
+      "text": "孫子教阿公用智慧型電視遙控器打開YouTube看楊麗花歌仔戲經典戲曲全集。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.222,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N48",
+      "category": "生活休閒",
+      "expected": "negative",
+      "text": "老鄰居找阿公下午去老人活動中心下象棋泡茶，順便聽大家聊下棋心得。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.219,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N49",
+      "category": "居家生活",
+      "expected": "negative",
+      "text": "後院陽台的花草長得很茂盛，下午戴草帽去拔雜草、修剪茉莉花跟九重葛枝條。",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.216,
+      "predicted_positive": false,
+      "actual_positive": false
+    },
+    {
+      "id": "N50",
+      "category": "台語休閒",
+      "expected": "negative",
+      "text": "chhut-mn̂g khì kong-hn̂g thô-pō͘ ūn-tōng, khòaⁿ-tio̍h chin chē lāu-pêng-iú teh khok-sio-kóng.",
+      "score": 0.0,
+      "label": "safe",
+      "matched": [],
+      "reasons": [
+        "沒有命中任何詐騙關鍵詞。"
+      ],
+      "latency_ms": 0.227,
+      "predicted_positive": false,
+      "actual_positive": false
+    }
+  ]
+}

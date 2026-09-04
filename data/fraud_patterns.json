@@ -1,0 +1,226 @@
+[
+  {
+    "id": "police-01",
+    "category": "假檢警",
+    "keywords_zh": ["檢察官", "偵辦", "案號", "傳票"],
+    "keywords_ta": ["kiám-chhat-koaⁿ", "sé-chîⁿ", "kiam-chè tiàu-cha", "tē-kiám-sú"],
+    "weight": 0.9,
+    "example": "這裡是地檢署，你涉及洗錢案，要把錢轉到監管帳戶配合調查。"
+  },
+  {
+    "id": "police-02",
+    "category": "假檢警",
+    "keywords_zh": ["監管帳戶", "警示戶", "凍結", "保管"],
+    "keywords_ta": ["kàm-koán tiùⁿ-hō͘", "kéng-sī-hō͘", "tòng-kiat", "pó-koán"],
+    "weight": 1.0,
+    "example": "你的帳戶被列為警示戶，錢要先匯到監管帳戶凍結保管。"
+  },
+  {
+    "id": "police-03",
+    "category": "假檢警",
+    "keywords_zh": ["地檢署", "冒用", "不要掛電話", "配合調查"],
+    "keywords_ta": ["tē-kiám-sú", "mō͘-iōng", "tiān-ōe mài kòa-tn̄g", "phòe-ha̍p tiàu-cha"],
+    "weight": 0.9,
+    "example": "我是台北地檢署檢察官，你的證件被冒用洗錢，電話不要掛斷。"
+  },
+  {
+    "id": "police-04",
+    "category": "假檢警",
+    "keywords_zh": ["洗錢", "金流異常", "保證金", "證明清白"],
+    "keywords_ta": ["sé-chîⁿ hông-tī-hoat", "kim-liû ī-siông", "pó-chèng-kim", "chheng-pe̍k"],
+    "weight": 0.8,
+    "example": "你涉嫌洗錢防制法，帳戶金流異常，要繳保證金證明清白。"
+  },
+  {
+    "id": "police-05",
+    "category": "假檢警",
+    "keywords_zh": ["戶政事務所", "委託辦理", "戶籍謄本", "個資遭冒用", "身分證被冒用"],
+    "keywords_ta": ["hō͘-chèng sū-bū-só͘", "sin-hūn-chèng", "mō͘-iōng", "kò-chu"],
+    "weight": 0.9,
+    "example": "這裡是戶政事務所，有人拿你的身分證委託辦理戶籍謄本與過戶，懷疑個資遭冒用涉案。"
+  },
+  {
+    "id": "police-06",
+    "category": "假檢警",
+    "keywords_zh": ["健保卡", "健保局", "停卡", "詐領補助", "醫療補助", "違規使用"],
+    "keywords_ta": ["kiān-pó-kio̍k", "kiān-pó-khah", "thêng-khah", "chà-niá"],
+    "weight": 0.9,
+    "example": "健保局通知，你的健保卡違規使用遭停卡，且涉嫌詐領醫療補助款，即將移送法辦。"
+  },
+  {
+    "id": "police-07",
+    "category": "假檢警",
+    "keywords_zh": ["行政執行署", "法務部", "強制扣押", "查封財產", "強制執行", "清償款項"],
+    "keywords_ta": ["hêng-chèng chip-hêng-sú", "kiông-chè khàu-ah", "chûn-khoán"],
+    "weight": 1.0,
+    "example": "法務部行政執行署通知，你有逾期未繳公法款項，今日內若未清償將強制扣押名下所有不動產與存款。"
+  },
+  {
+    "id": "invest-01",
+    "category": "假投資",
+    "keywords_zh": ["保證獲利", "加碼", "翻倍", "投資"],
+    "keywords_ta": ["pó-chèng he̍k-lī", "ke-bé", "hoan-pōe", "tâu-chu"],
+    "weight": 0.8,
+    "example": "加入我們的 VIP 投資群組，保證獲利，每個月穩穩翻倍。"
+  },
+  {
+    "id": "invest-02",
+    "category": "假投資",
+    "keywords_zh": ["穩賺不賠", "高報酬", "入金", "錯過就沒了"],
+    "keywords_ta": ["ún-thàn bē-sún", "ko-pò-siû", "ji̍p-kim", "chhò-kòe"],
+    "weight": 0.9,
+    "example": "這個方案穩賺不賠、高報酬，今天入金還有特別優惠，錯過就沒了。"
+  },
+  {
+    "id": "invest-03",
+    "category": "假投資",
+    "keywords_zh": ["老師帶單", "虛擬貨幣", "群組", "學員都賺"],
+    "keywords_ta": ["lāu-su chhōa-toaⁿ", "hi-gí hòe-pè", "kûn-cho͘", "thàn-tōa-chîⁿ"],
+    "weight": 0.8,
+    "example": "老師每天在群組帶單做虛擬貨幣，跟著操作的學員都賺大錢。"
+  },
+  {
+    "id": "invest-04",
+    "category": "假投資",
+    "keywords_zh": ["出金", "稅金", "手續費", "帳戶凍結"],
+    "keywords_ta": ["chhut-kim", "sòe-kim", "chhiú-sio̍k-hùi", "tòng-kiat"],
+    "weight": 1.0,
+    "example": "你要出金必須先繳 20% 的稅金和手續費，否則帳戶會被永久凍結。"
+  },
+  {
+    "id": "invest-05",
+    "category": "假投資",
+    "keywords_zh": ["USDT", "泰達幣", "面交", "OTC", "場外交易", "幣商"],
+    "keywords_ta": ["bīn-kau", "thài-ta̍t-pè", "hi-gí hòe-pè", "hiān-kim"],
+    "weight": 0.9,
+    "example": "購買低價 USDT 泰達幣，專員安排實體超商或咖啡廳面交 OTC，現金一手交錢一手轉幣。"
+  },
+  {
+    "id": "invest-06",
+    "category": "假投資",
+    "keywords_zh": ["黃金期貨", "外匯操盤", "期貨群組", "海外期貨", "帶盤操作"],
+    "keywords_ta": ["n̂g-kim kî-hòe", "gōa-hōe", "kûn-cho͘", "chhau-pôaⁿ"],
+    "weight": 0.85,
+    "example": "加入海外黃金期貨與外匯操盤群組，香港分析師帶盤操作，勝率百分之九十五。"
+  },
+  {
+    "id": "invest-07",
+    "category": "假投資",
+    "keywords_zh": ["抽中股票", "未上市股票", "假券商", "認購款", "保留額度", "新股申購"],
+    "keywords_ta": ["bī-siōng-chhī phòe-phiò", "chhiūⁿ-tiâu", "khoàn-siong", "jīn-kò͘-khoán"],
+    "weight": 0.95,
+    "example": "恭喜抽中未上市潛力股票，配合特定券商專案保留額度，需於三日內補足認購款。"
+  },
+  {
+    "id": "family-01",
+    "category": "假親友",
+    "keywords_zh": ["車禍", "醫院", "匯錢", "開刀"],
+    "keywords_ta": ["chhia-hō", "i-īⁿ", "hōe-chîⁿ", "khui-to"],
+    "weight": 0.9,
+    "example": "阿嬤，我出車禍在醫院，需要開刀，快匯十萬塊到這個帳號！"
+  },
+  {
+    "id": "family-02",
+    "category": "假親友",
+    "keywords_zh": ["急用錢", "匯錢", "不要跟別人說", "帳號"],
+    "keywords_ta": ["kip-iōng-chîⁿ", "hōe-chîⁿ", "mài kā pa-bú kóng", "tiùⁿ-hō"],
+    "weight": 0.8,
+    "example": "阿嬤，我有一筆急用錢，不要跟爸媽說，現在馬上匯給我好不好？"
+  },
+  {
+    "id": "family-03",
+    "category": "假親友",
+    "keywords_zh": ["AI變聲", "仿聲", "AI聲音", "視訊借錢", "鏡頭壞掉", "借錢週轉"],
+    "keywords_ta": ["AI piàn-siaⁿ", "hóng-siaⁿ", "sì-sìn chioh-chîⁿ", "kà-chhiok"],
+    "weight": 0.9,
+    "example": "媽！我視訊鏡頭壞掉聲音有點沙啞，我換新手機用AI降噪啦，我急需借錢週轉應急，帳號傳給你了！"
+  },
+  {
+    "id": "family-04",
+    "category": "假親友",
+    "keywords_zh": ["海外包裹", "海關扣留", "包裹被扣", "代收包裹", "補繳關稅", "海關保證金"],
+    "keywords_ta": ["hái-gōa pau-kó", "hái-koan khàu-liû", "tāi-siu", "koan-sòe"],
+    "weight": 0.85,
+    "example": "姑姑，我從國外寄了貴重海外包裹給你，但是卡在海關扣留，要先代收代墊關稅保證金才能放行。"
+  },
+  {
+    "id": "family-05",
+    "category": "假親友",
+    "keywords_zh": ["換號碼", "手機壞了", "新號碼", "存起來", "猜猜我是誰"],
+    "keywords_ta": ["ōaⁿ tiān-ōe hō-bé", "chhiú-ki pháiⁿ--khì", "sin hō-bé", "io̍h-chhaiⁿ"],
+    "weight": 0.75,
+    "example": "我換電話號碼了，原本的手機壞掉了，你先存這個新號碼，猜猜我是誰。"
+  },
+  {
+    "id": "family-06",
+    "category": "假親友",
+    "keywords_zh": ["綁架", "贖人", "報警", "撕票", "贖金"],
+    "keywords_ta": ["páng-kè", "siok-jîn", "pò-kéng", "si-phiò"],
+    "weight": 1.0,
+    "example": "你兒子在我手上，限你半小時內匯款五百萬贖人，敢報警就撕票。"
+  },
+  {
+    "id": "family-07",
+    "category": "假親友",
+    "keywords_zh": ["借存摺", "借帳戶", "人頭戶", "提款卡借用", "借健保卡"],
+    "keywords_ta": ["chioh chûn-chhat", "thê-khoán-khah", "jîn-thâu-hō͘", "kòe-chúi"],
+    "weight": 0.85,
+    "example": "舅舅，我公司要做外匯審查，借你的存摺印鑑與提款卡過水一下，下週就還你。"
+  },
+  {
+    "id": "family-08",
+    "category": "假親友",
+    "keywords_zh": ["工程款", "廠商催款", "週轉金", "急借週轉", "差頭期款"],
+    "keywords_ta": ["kang-thêng-khoán", "chiu-choán", "chhui-khoán", "ūi-iok"],
+    "weight": 0.8,
+    "example": "阿公，我跟朋友合夥工程款差十萬周轉，廠商在催款，今天沒付會違約被扣押。"
+  },
+  {
+    "id": "shopping-01",
+    "category": "假網拍",
+    "keywords_zh": ["解除分期", "分期付款", "重複扣款", "扣款設定", "ATM操作"],
+    "keywords_ta": ["kái-tû hun-kî", "hun-kî hù-khoán", "têng-ho̍k khàu-khoán", "ATM chhau-chok"],
+    "weight": 0.9,
+    "example": "您好，這裡是購物客服，因系統誤設為分期付款批發商，需至 ATM 依指示操作解除分期扣款。"
+  },
+  {
+    "id": "shopping-02",
+    "category": "假網拍",
+    "keywords_zh": ["買家認證", "賣家認證", "簽署金流協定", "未開通金流", "賣場凍結"],
+    "keywords_ta": ["bōe-ke jīn-chèng", "bōe-tiûⁿ tòng-kiat", "kim-liû hia̍p-gī"],
+    "weight": 0.85,
+    "example": "買家反映無法下單，請點擊連結簽署金流服務協議與賣家實名認證，否則凍結賣場帳號。"
+  },
+  {
+    "id": "utility-01",
+    "category": "假公務",
+    "keywords_zh": ["水費逾期", "電費逾期", "催繳", "停水", "停電", "點擊連結繳費"],
+    "keywords_ta": ["chúi-hùi chhui-kiáu", "iok-kî", "thêng-chúi", "tiám liân-kiat"],
+    "weight": 0.8,
+    "example": "自來水公司催繳通知：您有上期水費逾期未繳，請於今日前點擊簡訊連結繳費，逾期將派員停水。"
+  },
+  {
+    "id": "utility-02",
+    "category": "假公務",
+    "keywords_zh": ["交通罰單", "超速罰單", "罰鍰逾期", "吊扣駕照", "交通違規催繳"],
+    "keywords_ta": ["kau-thong hoa̍t-toaⁿ", "chhiau-sok", "kiáu hoa̍t-khoán", "tiàu-khàu"],
+    "weight": 0.8,
+    "example": "交通違規罰鍰逾期催繳通知，請儘速繳納罰款以免加處罰鍰或移送強制執行吊扣駕照。"
+  },
+  {
+    "id": "job-01",
+    "category": "假求職",
+    "keywords_zh": ["家庭代工", "打字排版", "材料保證金", "寄送存摺", "代工保證金"],
+    "keywords_ta": ["ka-têng tāi-kang", "pó-chèng-kim", "kià chûn-chhat", "kóe-chúi"],
+    "weight": 0.85,
+    "example": "居家手工代工包裝，免經驗月入數萬，需先寄送存摺提款卡審核或預繳材料保證金。"
+  },
+  {
+    "id": "job-02",
+    "category": "假求職",
+    "keywords_zh": ["刷單", "兼職點讚", "任務返現", "高額佣金", "刷單兼職"],
+    "keywords_ta": ["sòat-toaⁿ", "kiam-chit", "hōan-hiān", "liân-soat"],
+    "weight": 0.8,
+    "example": "招募線上電商點讚刷單員，完成一單返現十趴，動動手指輕鬆日賺五千元兼職。"
+  }
+]
